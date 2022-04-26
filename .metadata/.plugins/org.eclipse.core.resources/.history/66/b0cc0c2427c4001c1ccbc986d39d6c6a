@@ -1,0 +1,13 @@
+package com.elieldesenvolvimento.escola.escola;
+
+public class Escola {
+	
+	private Long id;
+	private String nome;
+	private String cpf;
+	
+	
+	public Escola () {
+	}
+
+}

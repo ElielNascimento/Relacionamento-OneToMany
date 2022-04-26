@@ -1,0 +1,24 @@
+package com.elieldesenvolvimento.escola.turma;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class AlunoService {
+
+	@Autowired
+	public AlunoRepository alunoRepository;
+	
+	public List<Turma> findAll (){
+		return alunoRepository.findAll();
+	}
+	public Turma findAllId (Long id) {
+		return alunoRepository.findById(id).get();
+	}
+	
+	public Turma createEscola (Turma escola) {
+		return alunoRepository.save(escola);
+	}
+}

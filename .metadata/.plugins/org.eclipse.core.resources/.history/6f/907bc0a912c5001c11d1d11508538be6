@@ -1,0 +1,46 @@
+package com.elieldesenvolvimento.escola.aluno;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.elieldesenvolvimento.escola.escola.Aluno;
+import com.elieldesenvolvimento.escola.escola.AlunoRepository;
+import com.elieldesenvolvimento.escola.escola.AlunoService;
+
+@Service
+public class EscolaService {
+
+	@Autowired
+	public EscolaRepository escolaRepository;
+
+	@Autowired
+	public AlunoService alunoRepository;
+
+	@Autowired
+	public AlunoService alunoService;
+
+	public List<Escola> findAll() {
+		return escolaRepository.findAll();
+	}
+
+	public Escola findAllId(Long id) {
+		return escolaRepository.findById(id).get();
+	}
+
+	public Escola createEscola(Escola escola, Long alunoId) {
+		Escola escola1 = new Escola();
+		
+		Aluno aluno =  alunoService.findAllId(alunoId);
+
+		aluno.setNomeAluno(aluno.getNomeAluno());
+		aluno.setCpfAluno(aluno.getCpfAluno());
+
+		escola.getAlunoList().add(aluno);
+		
+		escolaRepository.save(escola);
+
+		return escola;
+	}
+}

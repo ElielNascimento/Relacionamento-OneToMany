@@ -1,0 +1,24 @@
+package com.elieldesenvolvimento.escola.escola;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class AlunoService {
+
+	@Autowired
+	public AlunoRepository escolaRepository;
+	
+	public List<Aluno> findAll (){
+		return escolaRepository.findAll();
+	}
+	public Aluno findAllId (Long id) {
+		return escolaRepository.findById(id).get();
+	}
+	
+	public Aluno createEscola (Aluno escola) {
+		return escolaRepository.save(escola);
+	}
+}
